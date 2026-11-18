@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="top-title">
+            <h2>My Portfolio</h2>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Navbar Actions: Theme Toggle & Hamburger Menu -->
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleThemeFunc()">🌙</button>
+            <button id="menu-toggle" class="hamburger" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+    
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Home</h2>
+            <p>Hi, I am Atteka Ryaz, Welcome to my portfolio website. I am learning web development and Python.</p>
+            <img src="profile.jpg" alt="My Photo" width="200">
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a beginner web developer. I am learning HTML, CSS, JS and Python to build creative applications.</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>My Skills</h2>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>GitHub</li>
+            </ul>
+        </section>
+
+        <!-- Projects Section (Modules 1, 2, and 3) -->
+        <section id="projects">
+            <h2>My Projects & Modules</h2>
+            <div class="projects-container">
+
+                <!-- Project Card 1: Module 1 -->
+                <div class="project-card">
+                    <h3>Module 1: Basic Structure</h3>
+                    <p>Initial HTML setup, semantic tags, and basic layout structuring for the portfolio website.</p>
+                    <a href="https://github.com/atekkagul-ux/My-Portfolio_Web_Programming_Internship" target="_blank" class="project-link">GitHub Repo 1</a>
+                </div>
+
+                <!-- Project Card 2: Module 2 -->
+                <div class="project-card">
+                    <h3>Module 2: Styling & Assets</h3>
+                    <p>Added CSS styling, asset folders, profile images, and background layouts deployed to GitHub.</p>
+                    <a href="https://github.com/atekkagul-ux/My_Portfolio_Web_Programming_2nd_Module.git" target="_blank" class="project-link">GitHub Repo 2</a>
+                </div>
+
+                <!-- Project Card 3: Module 3 -->
+                <div class="project-card">
+                    <h3>Module 3: Dark/Light Mode</h3>
+                    <p>Implemented dynamic theme toggling with JavaScript and localStorage persistence across reloads.</p>
+                    <a href="https://github.com/atekkagul-ux/Web_Programming_Internship_3rd_Module.git" target="_blank" class="project-link">GitHub Repo 3</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Resume Section -->
+        <section id="education">
+            <h2>Education & Resume</h2>
+            <p><strong>Web Development & Programming Internship / Learning Journey</strong></p>
+            <p>Focused on gaining practical technical skills in frontend web development, Python programming, and responsive design.</p>
+            
+            <!-- Resume Download Button -->
+            <a href="Atteka_Ryaz_Resume.pdf" target="_blank" download="Atteka_Ryaz_Resume.pdf" class="resume-btn">📥 Download Resume</a>
+            <!-- Helpful Note -->
+           <p class="resume-note">
+             <strong>Note:</strong> If the download doesn't start automatically, click the three dots (<strong>⋮</strong> or <strong>•••</strong>) in the viewer to download.
+          </p>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form id="contact-form">
+                <input type="email" id="email" class="contact-box" placeholder="Enter your Email" required>
+                <input type="url" id="linkedin" class="contact-box" placeholder="Enter your Linkedin link" required>
+                <input type="url" id="github" class="contact-box" placeholder="Enter your Github link" required>
+                <button type="submit" class="send-btn">Send</button>
+            </form>
+            <p id="form-message" style="font-size: 14px; margin-top: 10px;"></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright 2026 Atteka Ryaz</p>
+    </footer>
+
+ <script>
+    function toggleThemeFunc() {
+        document.body.classList.toggle('dark-mode');
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.textContent = '☀️';
+            }
+        }
+    });
+</script>
+
+<script>
+    // Contact Form Submission Handler
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const messageBox = document.getElementById('form-message');
+        messageBox.style.color = '#4a00e0';
+        messageBox.textContent = 'Thank you! Your details have been submitted successfully.';
+        this.reset();
+    });
+
+    // Mobile Hamburger Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
